@@ -5,43 +5,20 @@
 Можно использовать свой вариант программы из предыдущего дз, мой вариант реализован ниже
 Задание: переписать код используя как минимум 1 функцию
 
-
-year = input('Ввведите год рождения А.С.Пушкина:')
-while year != '1799':
-    print("Не верно")
-    year = input('Ввведите год рождения А.С.Пушкина:')
-
-day = input('Ввведите день рождения Пушкин?')
-while day != '6':
-    print("Не верно")
-    day = input('В какой день июня родился Пушкин?')
-print('Верно')
 """
 
-def check_year(year, person):
-    input_year=''
-    while year!=input_year:
-        input_year=input (f'Введите год рождения {person}: ')
-        if year!=input_year :
-            print('Неверно. Попробуйте еще раз.')
-    print('Верно!')
-    return input_year
+def question_date(question, date):
+    answer=input(question)
+    while answer!=date:
+        print("Не верно")
+        answer=input(question)
 
-def check_day(day, month, person):
-    input_day=''
-    while day!=input_day:
-        input_day=input (f'В какой день {month} родился {person}?: ')
-        if day!=input_day :
-            print('Неверно. Попробуйте еще раз.')
-    print('Верно!')
-    return input_day
+person='А.С.Пушкин'
+birth_year='1799'
+birth_month= 'июня'
+birth_day='6'
 
-def check_birthday(kwargs):
-    check_year(kwargs.get('birth_year'),kwargs.get('person'))
-    check_day(kwargs.get('birth_day'),kwargs.get('birth_month'),kwargs.get('person'))
-
-birthday={'person':'А.С.Пушкин', 'birth_day':'6', 'birth_month':'июня', 'birth_year':'1799'}
-
-check_birthday(birthday)
-
+question_date(f"В какой год родился {person}? ",birth_year)
+question_date(f"В какой день {birth_month} родился {person}? " ,birth_day)
+print("Верно!")
 

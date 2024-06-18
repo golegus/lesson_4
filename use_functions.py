@@ -51,14 +51,14 @@ def buying(account_money, buying_history):
         print('На счету нет денег. Вы ничего не можете купить.')
         return account_money, buying_history
     else:
-        buying_val = int(input(f'Введите сумму покупки: '))
-        if buying_val > account_money:
+        cost = int(input(f'Введите сумму покупки: '))
+        if cost > account_money:
             print('Сумма покупки превышает количество денег на счету.')
             return account_money, buying_history
         buying_name = input('Введите наименование покупки: ')
-        account_money -= buying_val
-        buying_history.append((buying_name, buying_val))
-        print(f'Покупка {buying_name} на сумму {buying_val} завершена.')
+        account_money -= cost
+        buying_history.append((buying_name, cost))
+        print(f'Покупка {buying_name} на сумму {cost} завершена.')
         return account_money, buying_history
 
 def display_history(buying_history):

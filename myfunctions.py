@@ -6,31 +6,6 @@
 Задание: реализовать код функции, чтобы он работал по описанию и примеры использования давали верный результат
 """
 
-
-def simple_separator():
-    """
-    Функция создает красивый резделитель из 10-и звездочек (**********)
-    :return: **********
-    """
-    return '*'*10
-
-
-print(simple_separator() == '**********')  # True
-
-
-def long_separator(count):
-    """
-    Функция создает разделитель из звездочек число которых можно регулировать параметром count
-    :param count: количество звездочек
-    :return: строка разделитель, примеры использования ниже
-    """
-    return '*'*count
-
-
-print(long_separator(3) == '***')  # True
-print(long_separator(4) == '****')  # True
-
-
 def separator(simbol, count):
     """
     Функция создает разделитель из любых символов любого количества
@@ -40,35 +15,27 @@ def separator(simbol, count):
     """
     return simbol*count
 
+def long_separator(count):
+    """
+    Функция создает разделитель из звездочек число которых можно регулировать параметром count
+    :param count: количество звездочек
+    :return: строка разделитель, примеры использования ниже
+    """
+    return separator('*', count)
 
+def simple_separator():
+    """
+    Функция создает красивый резделитель из 10-и звездочек (**********)
+    :return: **********
+    """
+    return long_separator(10)
+
+
+print(simple_separator() == '**********')  # True
+print(long_separator(3) == '***')  # True
+print(long_separator(4) == '****')  # True
 print(separator('-', 10) == '----------')  # True
 print(separator('#', 5) == '#####')  # True
-
-
-def hello_world():
-    """
-    Функция печатает Hello World в формате:
-    **********
-
-    Hello World!
-
-    ##########
-    :return: None
-    """
-    print(f'{"*"*10}\n\nHello World!\n\n{"#"*10}')
-    return None
-    
-
-
-
-'''
-**********
-
-Hello World!
-
-##########
-'''
-hello_world()
 
 
 def hello_who(who='World'):
@@ -85,6 +52,30 @@ def hello_who(who='World'):
     print(f'{"*"*10}\n\nHello {who}!\n\n{"#"*10}')
     return None
 
+def hello_world():
+    """
+    Функция печатает Hello World в формате:
+    **********
+
+    Hello World!
+
+    ##########
+    :return: None
+    """
+    hello_who()
+    return None
+    
+
+
+
+'''
+**********
+
+Hello World!
+
+##########
+'''
+hello_world()
 
 '''
 **********
@@ -121,7 +112,6 @@ def pow_many(power, *args):
     """
     total=0
     for num in args:
-        if isinstance(num, (int,float)):
             total+=num
     return total**power
 
@@ -169,7 +159,8 @@ def my_filter(iterable, function):
     :param function: функция фильтрации
     :return: новая отфильтрованная последовательность
     """  
-    return [item for item in iterable if function(item)]
+    #return [item for item in iterable if function(item)]
+    return list(filter(function, iterable))
 
 
 
